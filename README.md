@@ -1,4 +1,4 @@
-NODE JS BOILER PLATE
+**NODE JS BOILER PLATE**
 
 Clone the repository:
 git clone <repository_url>
