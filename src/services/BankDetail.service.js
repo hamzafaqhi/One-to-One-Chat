@@ -1,9 +1,7 @@
 const db = require("../models/index.js")
 
-const create = async (data) => {
-  const record = await db.bank_detail.create(data);
-  return record;
-};
+const create = (data) => db.bank_detail.create(data);
+
 
 const bankDetailService = {
   create,
