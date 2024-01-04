@@ -3,7 +3,7 @@ const app = express();
 const { sequelize } = require('./src/models');
 const { config } = require('dotenv');
 const cors = require('cors');
-const apiRoutes = require('./src/routes/api');
+const public = require('./src/routes/public');
 config();
 const PORT = process.env.PORT;
 
@@ -12,7 +12,7 @@ app.use(express.json());
 
 // Routes
 app.use(cors());
-app.use('/api/', apiRoutes);
+app.use('/api/', public);
 
 // Only start the server if it is not being used for testing
 if (!module.parent) {

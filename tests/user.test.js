@@ -2,8 +2,8 @@ const request = require('supertest');
 const app = require('../server');
 const { sequelize } = require('../src/models');
 const { config } = require('dotenv');
-const bankDetailService = require('../src/services/BankDetail.service.js');
 const db = require('../src/models');
+const userService = require('../src/services/api/user.service.js');
 config();
 describe('Bank Details API', () => {
 
@@ -24,29 +24,29 @@ describe('Bank Details API', () => {
     // Close the server after running the tests
     await server.close();
   });
-  describe('POST /bank_details', () => {
-    it('should return 200 and create a bank detail record', async () => {
+  describe('POST /register', () => {
+    it('should return 200 and create a user record', async () => {
       const requestBody = {
-        bank_name: 'Example Bank',
-        account_holder_name: 'John Doe',
-        account_number: '1234567890',
+        first_name: 'xy',
+        last_name: 'z',
+        email: 'h@g.com',
+        password: '123456',
+        phone: '1234567890',
       };
       const mockRecord = { ...requestBody, id:100, createdAt: '2023-05-21T12:34:56Z', updatedAt: '2023-05-21T12:34:56Z' };
-      bankDetailService.create = jest.fn().mockResolvedValue(mockRecord);
+      userService.create = jest.fn().mockResolvedValue(mockRecord);
       // Make the request to the API endpoint
-      const response = await request(app)
-        .post('/api/bank_details')
-        .send(requestBody)
-        .expect(200);
+      const response = await request(app).post('/api/register').send(requestBody).expect(200);
       expect(response.body).toEqual(expect.objectContaining({
         code: 200,
         data: {
-          id:100,
-          bank_name: 'Example Bank',
-          account_number: '1234567890',
-          account_holder_name: 'John Doe',
-          createdAt: '2023-05-21T12:34:56Z', 
-          updatedAt: '2023-05-21T12:34:56Z'
+            id:100,
+            first_name: 'xy',
+            last_name: 'z',
+            email: 'h@g.com',
+            phone: '1234567890',
+            createdAt: '2023-05-21T12:34:56Z', 
+            updatedAt: '2023-05-21T12:34:56Z'
         },
         success: true,
         pagination: null
