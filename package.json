@@ -9,7 +9,7 @@
     "make:controller": "node scripts/generate.controller.js",
     "make:service": "node scripts/generate.service.js",
     "db:migrate": "npx sequelize-cli db:migrate",
-    "model:generate": "npx sequelize-cli model:generate --name ",
+    "model:generate": "npx sequelize-cli model:generate",
     "db:migrate:undo": "npx sequelize-cli db:migrate:undo",
     "db:migrate:undo:all": "npx sequelize-cli db:migrate:undo:all",
     "seed:generate": "npx sequelize-cli seed:generate --name",
@@ -32,6 +32,7 @@
     "path": "^0.12.7",
     "pg": "^8.11.0",
     "pug": "^3.0.2",
+    "pusher": "^5.2.0",
     "sequelize": "^6.31.1",
     "sequelize-cli": "^6.6.0",
     "supertest": "^6.3.3"

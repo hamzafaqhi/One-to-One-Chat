@@ -13,7 +13,7 @@ const generateController = (controllerName) => {
     exportName = exportName.reduce((prevVal,currVal,idx) => { 
         return idx == 0 ? currVal : `${prevVal}${ucFirst(currVal)}`
     })
-    const serviceContent = ` 
+    const controllerContent = ` 
     const index = async (req, res) => { 
         // Your default index logic here
     }
